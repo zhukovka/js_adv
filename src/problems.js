@@ -33,6 +33,9 @@ var methods = {
             value: a,
             source: b + ""
         };
+    },
+    addm: function () {
+        
     }
 };
 
