@@ -1,5 +1,9 @@
 var assert = require('assert');
 var methods = require('../src/problems');
+var add = methods.add;
+var mul = methods.mul;
+var m = methods.m;
+var square = methods.square;
 describe('Closure', function () {
     describe('function that adds from many invocations, until it sees an empty invocation', function () {
         it('should return 0', function test() {
@@ -57,5 +61,47 @@ describe('Closure', function () {
             var expected = methods.m(3, 4);
             assert.deepEqual(actual, expected);
         });
+    });
+    describe('Write a function addm that takes two m objects and returns an m object.', function () {
+        it('should have value {"value": 3, "source": "(3+4)"}', function test() {
+            var actual = {"value": 3, "source": "(3+4)"};
+            var expected = methods.addm(methods.m(3), methods.m(4));
+            assert.deepEqual(actual, expected);
+        });
+    });
+    describe('Write a function binarymf that takes a binary function and a string and returns a function that acts on m objects.', function () {
+
+        it('should have value {"value": 7, "source": "(3+4)"}', function test() {
+            var addm = methods.binarymf(add, "+");
+            var actual = {"value": 7, "source": "(3+4)"};
+            var expected = addm(m(3), m(4));
+            assert.deepEqual(actual, expected);
+        });
+        it('should have value {"value": 12, "source": "(3*4)"}', function test() {
+            var mulm = methods.binarymf(mul, "*");
+            var actual = {"value": 12, "source": "(3*4)"};
+            var expected = mulm(m(3), m(4));
+            assert.deepEqual(actual, expected);
+        });
+        it('should have value {"value": 12, "source": "(3*4)"}', function test() {
+            var mulm = methods.binarymf(mul, "*");
+            var actual = {"value": 12, "source": "(3*4)"};
+            var expected = mulm(3, m(4));
+            assert.deepEqual(actual, expected);
+        });
+        it('should have value {"value": 12, "source": "(3*4)"}', function test() {
+            var mulm = methods.binarymf(mul, "*");
+            var actual = {"value": 12, "source": "(3*4)"};
+            var expected = mulm(3, 4);
+            assert.deepEqual(actual, expected);
+        });
+    });
+    describe('Write function unarymf, which is like binarymf except that it acts on unary functions', function () {
+        it('{"value": 16,"source": "(square 4)"}', function test() {
+            var squarem = methods.unarymf(square.bind(methods), "square");
+            var actual = {"value": 16,"source": "(square 4)"};
+            var expected = squarem(4);
+            assert.deepEqual(actual, expected);
+        })
     })
 });
