@@ -1,25 +1,19 @@
+var Shape = require('./Shape');
+
 function Square(side, x, y) {
-    this.side = side || 20;
-    this.x = x || 0;
-    this.y = y || 0;
+    Shape.apply(this, arguments);
 }
 
-Square.prototype.setContext = function (ctx) {
-    this.ctx = ctx;
-};
-
+Square.prototype = Object.create(Shape.prototype);
+Square.prototype.constructor = Square;
 Square.prototype.draw = function () {
     if(!this.ctx){
         throw new Error("The context must be set");
     }
+    this.ctx.fillStyle = this.generateColor();
     //context.fillRect(x,y,width,height);
     this.ctx.fillRect(this.x, this.y, this.side, this.side);
+    this.ctx.fillStyle = "#000";
 };
-
-Square.prototype.move = function (x, y) {
-    this.x = x || this.x;
-    this.y = y || this.y;
-};
-
 
 module.exports = Square;
