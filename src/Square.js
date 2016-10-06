@@ -11,7 +11,7 @@ Square.prototype.draw = function () {
         throw new Error("The context wasn't find");
     }
     this.ctx.fillStyle = this.genarateColor();
-    this.ctx.fillRect(this.x, this.y, this.side, this.side*2);
+    this.ctx.fillRect(this.x, this.y, this.side, this.side);
     this.ctx.fillStyle = "#000";
 };
 

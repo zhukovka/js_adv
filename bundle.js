@@ -33,7 +33,7 @@ Square.prototype.draw = function () {
         throw new Error("The context wasn't find");
     }
     this.ctx.fillStyle = this.genarateColor();
-    this.ctx.fillRect(this.x, this.y, this.side, this.side*2);
+    this.ctx.fillRect(this.x, this.y, this.side, this.side);
     this.ctx.fillStyle = "#000";
 };
 
@@ -71,30 +71,30 @@ document.addEventListener("DOMContentLoaded", function () {
         var w = canvas.width;
         var h = canvas.height;
         var side = 50;
-        var squares = [];
-        for(var a = 0; a < 50; i++){
+        var shapes = [];
+        for(var i = 0; i < 50; i++){
             var x = Math.random() * (w - side);
             var y = Math.random() * (h - side);
             var square = new Square(side, x, y);
             square.setContext(ctx);
             square.draw();
-            squares.push(square);
+            shapes.push(square);
         }
-        for(var b = 0; b < 50; i++){
+        for(var i = 0; i < 50; i++){
             var x = Math.random() * (w - side);
             var y = Math.random() * (h - side);
             var circle = new Circle(side, x, y);
             circle.setContext(ctx);
             circle.draw();
-            circle.push(circle);
+            shapes.push(circle);
         }
-        for(var c = 0; c < 50; i++){
+        for(var c = 0; c < 50; c++){
             var x = Math.random() * (w - side);
             var y = Math.random() * (h - side);
             var triangle = new Triangle(side, x, y);
             triangle.setContext(ctx);
             triangle.draw();
-            triangle.push(triangle);
+            shapes.push(triangle);
         }
         var inteval = setInterval(function () {
             ctx.clearRect(0, 0, w, h);
