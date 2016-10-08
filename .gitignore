@@ -1,3 +1,4 @@
 .idea
 node_module
 /bundle.js
+node_modules
