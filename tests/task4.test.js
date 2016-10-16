@@ -1,5 +1,5 @@
 var assert = require('assert');
-var func = require('../src/task4');
+var func = require('../src/functions/task4');
 describe('Closure', function () {
     describe('function return array < 50 symbols', function () {
         it('should return array', function test() {

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var func = require('../src/Task1');
+var func = require('../src/functions/Task1');
 var upperCaser = func.upperCaser;
 describe('Closure', function () {
     describe('function return uppercase', function () {

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var func = require('../src/Task3');
+var func = require('../src/functions/Task3');
 describe('Closure', function () {
     describe('function return array', function () {
         it('should return array', function test() {
